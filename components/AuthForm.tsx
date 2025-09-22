@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import Link from "next/link"
 import React from 'react'
+import { toast } from "sonner";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
@@ -55,7 +56,19 @@ const Authform: React.FC<AuthformProps> = ({ type }) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     try {
-      
+      if (type === "sign-in") {
+        // sign in logic
+        console.log("sign up ", values)
+      }else{
+        console.log("sign in ", values)
+        // sign up logic
+
+      }
+    } catch (error) {
+        console.log(error);
+        toast.error(`Failed to sign in. Please try again."${error}`);
+
+
     }
     console.log(values)
   }
