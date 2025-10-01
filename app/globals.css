@@ -332,3 +332,18 @@
     transform: translateY(0);
   }
 }
+
+/* globals.css */
+:root {
+  --background: #000000; /* Black background */
+  --foreground: #ffffff; /* White text */
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+

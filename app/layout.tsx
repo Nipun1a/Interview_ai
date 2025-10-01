@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "sonner";
-import Image from "next/image"; 
+import Image from "next/image";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,25 +16,32 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Interview.AI",
-  description: "an ai powered inteview practice tool",
+  description: "An AI-powered interview practice tool",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>): JSX.Element {
-  return(
-    <div className="root-layout">
-    <nav>
-    <Link href = "/" className="flex items-center gap-2">
-    <Image src="/logo.svg" alt="logo" height={32} width={38} />
-    <h2 className="text-primary-100 text-xl font-semibold">
-            Interview.AI
-          </h2>
-    </Link>
-    </nav>
+}) {
+  return (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} bg-black text-white min-h-screen`}
+      >
+        {/* ---- NAVBAR ---- */}
+        <nav className="flex items-center gap-2 px-6 py-4 border-b border-gray-800">
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/logo.svg" alt="logo" height={32} width={38} />
+            <h2 className="text-primary-100 text-xl font-semibold">
+              Interview.AI
+            </h2>
+          </Link>
+        </nav>
 
-    </div>
+        {/* ---- PAGE CONTENT ---- */}
+        <main className="p-6">{children}</main>
+      </body>
+    </html>
   );
 }
