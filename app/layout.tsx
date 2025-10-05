@@ -3,8 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
-import { isAuthenticated } from '@/lib/actions/auth.action';
-//import { redirect } from 'next/dist/server/api-utils'
+
+
+
 import { redirect } from 'next/navigation';
 
 const geistSans = Geist({
@@ -27,11 +28,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-   const isUserAuthenticated = await isAuthenticated();
   
-    if(!isUserAuthenticated){
-      redirect('/auth/sign-in');
-    }
+
   return (
     <html lang="en">
       <body
